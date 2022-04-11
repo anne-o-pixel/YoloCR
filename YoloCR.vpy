@@ -16,7 +16,8 @@ if ModeU=='znedi3':
 import havsfunc as haf
 import functools
 import os
-core=vs.get_core()
+
+core=vs.core
 
 def minimum(x,y):
 	return min(x,y)
@@ -133,7 +134,9 @@ def Cleaning(clip,e):
 	
 def SceneLog(n,f,clip,log):
 	if f.props._SceneChangeNext == 1 or f.props._SceneChangePrev == 1:
-		open(log, "a").write(str(n)+" "+str(f.props._SceneChangePrev)+" "+str(f.props._SceneChangeNext)+"\n")
+		scenelogfile = open(log, "a")
+		scenelogfile.write(str(n)+" "+str(f.props._SceneChangePrev)+" "+str(f.props._SceneChangeNext)+"\n")
+		scenelogfile.close()
 	return clip
 
 HauteurCropBox=HauteurCropBox+DimensionCropBox[1]
@@ -148,7 +151,9 @@ Blank=core.std.BlankClip(ClipResized,format=vs.GRAY8)
 
 ClipCleaned=Cleaning(ClipResized,ExpandRatio)
 
-open("SceneChanges.log", "w").write("0 1 0\n")
+scenechangesfile = open("SceneChanges.log", "w")
+scenechangesfile.write("0 1 0\n")
+scenechangesfile.close()
 ClipCleanedSC=core.std.CropAbs(clip=ClipCleaned,width=int(ClipCleaned.width/2.7),height=int(ClipCleaned.height/2.7),left=int(ClipCleaned.width*(1-1/2.7)/2),top=int(ClipCleaned.height/2))
 ClipCleanedSC=core.misc.SCDetect(clip=ClipCleanedSC,threshold=SeuilSCD)
 ClipCleaned=core.std.FrameEval(ClipCleaned,functools.partial(SceneLog,clip=ClipCleaned,log="SceneChanges.log"),prop_src=ClipCleanedSC)
@@ -158,7 +163,9 @@ if HauteurCropBoxAlt>=0:
 	
 	ClipCleanedAlt=Cleaning(ClipResizedAlt,ExpandRatio)
 	
-	open("SceneChangesAlt.log", "w").write("0 1 0\n")
+	scenechangesaltfile = open("SceneChangesAlt.log", "w")
+	scenechangesaltfile.write("0 1 0\n")
+	scenechangesaltfile.close()
 	ClipCleanedAltSC=core.std.CropAbs(clip=ClipCleanedAlt,width=int(ClipCleanedAlt.width/2.7),height=int(ClipCleanedAlt.height/2.7),left=int(ClipCleanedAlt.width*(1-1/2.7)/2),top=int(ClipCleanedAlt.height*(1/2-1/2.7)))
 	ClipCleanedAltSC=core.misc.SCDetect(clip=ClipCleanedAltSC,threshold=SeuilSCD)
 	ClipCleanedAlt=core.std.FrameEval(ClipCleanedAlt,functools.partial(SceneLog,clip=ClipCleanedAlt,log="SceneChangesAlt.log"),prop_src=ClipCleanedAltSC)
