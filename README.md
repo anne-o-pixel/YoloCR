@@ -1,6 +1,7 @@
-# [YoloCR](https://bitbucket.org/YuriZero/yolocr/src)
+# YoloCR
 
 ## For noobs
+
 Install the requirements with the Ubuntu 20.04 (Focal Fossa) installation script.
 You can install Ubuntu 20.04 inside a virtual machine like Virtualbox.
 
@@ -11,17 +12,18 @@ Global Requirements for all the OS.
 ### Global Requirements
 
 * ffmpeg
-* Vapoursynth R36+
+* Vapoursynth R51+
+	* [Vapoursynth Editor](https://github.com/YomikoR/VapourSynth-Editor)
 	* plugins for Vapoursynth: 
 		* [FFMS2](https://github.com/FFMS/ffms2)
-		* [HAvsFunc](http://forum.doom9.org/showthread.php?t=166582), requires [mvsfunc](http://forum.doom9.org/showthread.php?t=172564) and [adjust](https://github.com/dubhater/vapoursynth-adjust)
+		* [vs-masktools](https://github.com/Irrational-Encoding-Wizardry/vs-masktools)
 		* [fmtconv](http://forum.doom9.org/showthread.php?t=166504)
+		* [miscfilters-obsolete](https://github.com/vapoursynth/vs-miscfilters-obsolete)
 		* *optional*: [edi_rpow2](http://forum.doom9.org/showthread.php?t=172652), requires [znedi3](https://github.com/sekrit-twc/znedi3)
 		* *very optional*: [Waifu2x-w2xc](http://forum.doom9.org/showthread.php?t=172390)
 	* note:
 		* Vapoursynth plugins (.so on Unix, .dll on Windows) should be placed inside one of theses directories: http://www.vapoursynth.com/doc/autoloading.html
 		* Vapoursynth scripts (.py) should be placed inside the "site-packages" directory of your Python3 installation.
-	* [Vapoursynth Editor](https://bitbucket.org/mystery_keeper/vapoursynth-editor)
 
 ### Unix/Linux Requirements
 
@@ -35,10 +37,6 @@ Global Requirements for all the OS.
 
 > *Note*: most of these package, with the exception of all the plugins for vapoursynth, are available as official package for your distro.
 
-> For Ubuntu 20.04, all the requirements can be installed with the YoloBuntuInstallation script : `sh YoloBuntuInstallation.sh eng-only`
-
-> For Ubuntu, *vapoursynth*, *vapoursynth-editor* and  *vapoursynth-extra-plugins* (to install all the mandatory plugins above) are available through this ppa: [`ppa:djcj/vapoursynth`](https://launchpad.net/~djcj/+archive/ubuntu/vapoursynth)
-
 ### Windows Requirements
 
 * [Cygwin](https://www.cygwin.com/). During the install, activate:
@@ -49,7 +47,7 @@ Global Requirements for all the OS.
 	* perl
 	* wget
 	* tesseract-ocr
-	* tesseract-ocr-eng
+	* tesseract-ocr-<lang>
 
 > You can use ABBYY FineReader instead of Tesseract.
 
@@ -57,12 +55,9 @@ Global Requirements for all the OS.
 	* `wget -O - pi.dk/3 | bash`
 	* `if [ -f ~/bin/parallel ]; then mv ~/bin/parallel /usr/local/bin/; fi`
 
-> *Note*: Cygwin terminal usage here → [https://help.ubuntu.com/community/UsingTheTerminal](https://help.ubuntu.com/community/UsingTheTerminal)
-
-> C drive path is "/cygdrive/c".
-
-> Scripts have to be used within Cygwin terminal.
-
+> *Note*: Cygwin terminal usage here → [https://help.ubuntu.com/community/UsingTheTerminal](https://help.ubuntu.com/community/UsingTheTerminal)<br>
+> C drive path is "/cygdrive/c".<br>
+> Scripts have to be used within Cygwin terminal.<br>
 > If you use Windows 10, you can install BashOnWindows instead of Cygwin.
 
 ## How to use?
