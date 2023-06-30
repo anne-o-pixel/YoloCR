@@ -6,9 +6,11 @@ ModeU='sinc' # 'sinc' (2 taps, plus rapide), 'znedi3' (plus lent) ou 'waifu2x' (
 
 
 import vapoursynth as vs
+
 if ModeU=='znedi3':
 	import edi_rpow2 as edi
-core=vs.get_core()
+
+core=vs.core
 
 def Grayuv(x):
 	return 128
