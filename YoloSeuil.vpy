@@ -10,7 +10,8 @@ Seuil=-1 # Seuil délimitant les sous-titres. Mettre à -1 pour chercher le seui
 import vapoursynth as vs
 if ModeU=='znedi3':
 	import edi_rpow2 as edi
-core=vs.get_core()
+
+core=vs.core
 
 Clip=core.ffms2.Source(source=FichierSource)
 Clip=core.std.CropAbs(clip=Clip,width=DimensionCropBox[0],height=DimensionCropBox[1],left=int((Clip.width-DimensionCropBox[0])/2),top=Clip.height-HauteurCropBox-DimensionCropBox[1])
